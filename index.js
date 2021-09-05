@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const Post = require("./module/Post");
@@ -25,7 +24,12 @@ app.use(function(req, res, next) {
 //PORT
 const port = process.env.PORT || 3001;
 
-app.use(express.static(path.resolve(__dirname, "/build")));
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("build"));
+    app.get("*", (req, res) => {
+        req.sendFile(path.resolve(__dirname, "build", "index.html"));
+    });
+}
 
 app.listen(port, () => console.log("listening on " + port));
 mongoose
