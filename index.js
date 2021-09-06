@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const Post = require("./module/Post");
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 
 const userSchema = new mongoose.Schema({});
 const Players = mongoose.model("Players", userSchema, "players");
