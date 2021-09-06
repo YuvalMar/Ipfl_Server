@@ -24,6 +24,7 @@ app.use(function(req, res, next) {
 //PORT
 const port = process.env.PORT || 3001;
 if (process.env.NODE_ENV === "production") {
+    console.log("im here");
     app.use(express.static("build"));
     app.get("*", (req, res) => {
         req.sendFile(path.resolve(__dirname, "build", "index.html"));
@@ -51,26 +52,15 @@ app.get("/players", async(req, res) => {
     }
 });
 
-//Submit Post
-app.post("/posts", async(req, res) => {
-    const post = new Post(req.body);
-    try {
-        const savedPost = await post.save();
-        res.json(savedPost);
-    } catch (err) {
-        res.json({ message: err });
-    }
-});
-
-app.post("/players", async(req, res) => {
-    const post = new Post(req.body);
-    try {
-        const savedPost = await post.save();
-        res.json(savedPost);
-    } catch (err) {
-        res.json({ message: err });
-    }
-});
+// app.post("/players", async(req, res) => {
+//     const post = new Post(req.body);
+//     try {
+//         const savedPost = await post.save();
+//         res.json(savedPost);
+//     } catch (err) {
+//         res.json({ message: err });
+//     }
+// });
 
 // Specific post
 
