@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
     console.log("im here");
     app.use(express.static("build"));
     app.get("*", (req, res) => {
-        req.sendFile(path.resolve(__dirname, "build", "index.html"));
+        res.sendFile(path.resolve(__dirname, "build", "index.html"));
     });
 }
 console.log("Db connection is" + process.env.DB_CONNECTION);
