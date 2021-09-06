@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const Post = require("./module/Post");
-require("dotenv/config");
+require("dotenv").config();
 
 const userSchema = new mongoose.Schema({});
 const Players = mongoose.model("Players", userSchema, "players");
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === "production") {
         req.sendFile(path.resolve(__dirname, "build", "index.html"));
     });
 }
-
+console.log("Db connection is" + process.env.DB_CONNECTION);
 app.listen(port, () => console.log("listening on " + port));
 mongoose
     .connect(process.env.DB_CONNECTION, {
