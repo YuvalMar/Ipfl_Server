@@ -24,13 +24,13 @@ app.use(function(req, res, next) {
 
 //PORT
 const port = process.env.PORT || 3001;
-if (process.env.NODE_ENV === "production") {
-    console.log("im here");
-    app.use(express.static("build"));
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "build", "index.html"));
-    });
-}
+// if (process.env.NODE_ENV === "production") {
+//     console.log("im here");
+//     app.use(express.static("build"));
+//     app.get("*", (req, res) => {
+//         res.sendFile(path.resolve(__dirname, "build", "index.html"));
+//     });
+// }
 console.log("Db connection is" + process.env.DB_CONNECTION);
 app.listen(port, () => console.log("listening on " + port));
 mongoose
